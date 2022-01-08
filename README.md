@@ -2,6 +2,22 @@
 
 Downloads songs from Spotify playlist as audio from YouTube.
 
+## usage
+
+'''
+usage: ./downloader.py [-h] [-p PLAYLIST] [-o OUTPUTDIR] [-c CODEC]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -p PLAYLIST, --playlist PLAYLIST
+                        ID of a Spotify playlist
+  -o OUTPUTDIR, --outputdir OUTPUTDIR
+                        folder in which the songs will be saved into
+  -c CODEC, --codec CODEC
+                        preferred audio codec
+
+'''
+
 ## required packages
 
 - `youtube-dl`
