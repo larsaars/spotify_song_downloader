@@ -4,7 +4,7 @@ Downloads songs from Spotify playlist as audio from YouTube.
 
 ## usage
 
-'''
+```
 usage: ./downloader.py [-h] [-p PLAYLIST] [-o OUTPUTDIR] [-c CODEC]
 
 optional arguments:
@@ -15,8 +15,7 @@ optional arguments:
                         folder in which the songs will be saved into
   -c CODEC, --codec CODEC
                         preferred audio codec
-
-'''
+```
 
 ## required packages
 
