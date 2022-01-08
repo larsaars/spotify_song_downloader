@@ -14,4 +14,4 @@ Also, you have to create a Spotify Developer account and [register an spotify ap
 
 ## DISCLAIMER
 
-I [THE AUTHOR] is not responsible for any illegal acts commited by using this code.
+I [THE AUTHOR] am not responsible for any illegal acts commited by using this code.
