@@ -66,7 +66,7 @@ if __name__ == '__main__':
         # define valid args
         parser = ArgumentParser(
                 description='Downloads songs from Spotify playlist as audio from YouTube.',
-                epilog='I [the author] is not responsible for any illegal act commit with this script.'
+                epilog='I [THE AUTHOR] am not responsible for any illegal act commit with this this code.'
         )
         
         parser.add_argument('-p', 
