@@ -1,4 +1,4 @@
-# song downloader
+# Spotify song downloader
 
 Downloads songs in spotify playlist from youtube (the best results).
 
