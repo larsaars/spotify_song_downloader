@@ -26,6 +26,7 @@ optional arguments:
 ## other requirements
 
 Also, you have to create a Spotify Developer account and [register an spotify application](https://developer.spotify.com/dashboard/applications), of which you must store in a file `spotify_secrets.txt` the client id and in the second line the client secret.
+Don't forget to add `http://localhost:8888/callback` as redirection link in the Spotify App options.
 
 ## DISCLAIMER
 
