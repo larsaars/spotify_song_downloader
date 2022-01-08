@@ -1,6 +1,6 @@
 # Spotify song downloader
 
-Downloads all songs in spotify playlist from first YouTube search result.
+Downloads songs from Spotify playlist as audio from YouTube.
 
 ## required packages
 
