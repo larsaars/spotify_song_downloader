@@ -128,8 +128,6 @@ if __name__ == '__main__':
                 log(f'downloading {link}')
                 download_video([link])
             except Exception as e:
-                print(e)
-
                 if not args.ignoreerrors:
                     input('[downlaoder] Download interrupted. Press [enter] to continue with next song.')
     except KeyboardInterrupt:
