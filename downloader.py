@@ -64,7 +64,7 @@ def find_first_result_yt(search):
 
 
 def sleep_random():
-    time_sleeping = uniform(1.5, 7.5))
+    time_sleeping = uniform(1.5, 7.5)
     log(f'Sleeping {time_sleeping} seconds to avoid bot detection.')
     sleep(time_sleeping)
 
