@@ -22,13 +22,15 @@ optional arguments:
 
 ## required packages
 
+install with `pip install -r requirements.txt`
+
 - `youtube-dl`
 - `spotipy`
 - `youtube-search-python`
 
 ## other requirements
 
-Also, you have to create a Spotify Developer account and [register an spotify application](https://developer.spotify.com/dashboard/applications), of which you must store in a file `spotify_secrets.txt` the client id and in the second line the client secret.
+Also, you have to create a Spotify Developer account and [register an spotify application](https://developer.spotify.com/dashboard/applications), of which you must store in a file `spotify_secrets.txt` the client id (line one) and the client secret (line two).
 Don't forget to add `http://localhost:8888/callback` as redirection link in the Spotify App options.
 
 ## DISCLAIMER
