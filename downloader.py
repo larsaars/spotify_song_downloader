@@ -84,6 +84,11 @@ if __name__ == '__main__':
                 type=str,
                 default='mp3',
                 help='preferred audio codec')
+        parser.add_argument('-i',
+                '--ignoreerrors',
+                type=bool,
+                default=False,
+                help='ignore downlaoding errors and continue with next song')
 
         args = parser.parse_args()
 
@@ -108,18 +113,24 @@ if __name__ == '__main__':
             song_names.append(track['name'] + ' ' + track['artists'][0]['name'])
 
         log('Done scraping song names from Spotify.')
-        
+
         # search first video result via youtubesearchpython library
         # do that looping through all playlist names
         for song in song_names:
-            log(f'searching {song} on YouTube')
-            link = find_first_result_yt(song)
+            try:
+                log(f'searching {song} on YouTube')
+                link = find_first_result_yt(song)
 
-            if link == None:
-                log('No video found for song.')
-                continue
+                if link == None:
+                    log('No video found for song.')
+                    continue
 
-            log(f'downloading {link}')
-            download_video([link])
-    except KeyboardInterrupt as e:
+                log(f'downloading {link}')
+                download_video([link])
+            except Exception as e:
+                print(e)
+
+                if not args.ignoreerrors:
+                    input('[downlaoder] Download interrupted. Press [enter] to continue with next song.')
+    except KeyboardInterrupt:
         log('Interrupted')
