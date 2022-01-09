@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
-'''
+"""
 specify a playlist and download
 the songs from youtube
 (sound of best result video)
-'''
+"""
 
 from __future__ import unicode_literals
 import os
@@ -15,6 +15,8 @@ from os.path import join, exists
 from login_spotify import *
 from time import sleep
 from youtubesearchpython import VideosSearch
+from time import sleep
+from random import uniform
 
 
 def download_video(urls):
@@ -59,6 +61,12 @@ def find_first_result_yt(search):
         return None
 
     return 'https://www.youtube.com/watch?v=' + result[0]['id']
+
+
+def sleep_random():
+    time_sleeping = uniform(1.5, 7.5))
+    log(f'Sleeping {time_sleeping} seconds to avoid bot detection.')
+    sleep(time_sleeping)
 
 
 if __name__ == '__main__':
@@ -125,10 +133,17 @@ if __name__ == '__main__':
                     log('No video found for song.')
                     continue
 
+                # sleep a random amount of time to avoid suspicion from yotube to be a bot
+                sleep_random()
+
                 log(f'downloading {link}')
                 download_video([link])
             except Exception as e:
                 if not args.ignoreerrors:
                     input('[downlaoder] Download interrupted. Press [enter] to continue with next song.')
+
+            # and sleep again
+            sleep_random()
+
     except KeyboardInterrupt:
         log('Interrupted')
