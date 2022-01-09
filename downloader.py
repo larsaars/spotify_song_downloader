@@ -63,10 +63,6 @@ def find_first_result_yt(search):
     return 'https://www.youtube.com/watch?v=' + result[0]['id']
 
 
-def sleep_random():
-    time_sleeping = uniform(1.5, 7.5)
-    log(f'Sleeping {time_sleeping} seconds to avoid bot detection.')
-    sleep(time_sleeping)
 
 
 if __name__ == '__main__':
@@ -92,11 +88,11 @@ if __name__ == '__main__':
                 type=str,
                 default='mp3',
                 help='preferred audio codec')
-        parser.add_argument('-i',
-                '--ignoreerrors',
-                type=bool,
-                default=False,
-                help='ignore downlaoding errors and continue with next song')
+        parser.add_argument('-r',
+                '--retries',
+                type=int,
+                default=2,
+                help='retry n times on download error')
 
         args = parser.parse_args()
 
@@ -123,27 +119,27 @@ if __name__ == '__main__':
         log('Done scraping song names from Spotify.')
 
         # search first video result via youtubesearchpython library
-        # do that looping through all playlist names
-        for song in song_names:
+        def download_and_search(song, tries_left):
             try:
                 log(f'searching {song} on YouTube')
                 link = find_first_result_yt(song)
 
                 if link == None:
                     log('No video found for song.')
-                    continue
-
-                # sleep a random amount of time to avoid suspicion from yotube to be a bot
-                sleep_random()
-
-                log(f'downloading {link}')
-                download_video([link])
+                else:
+                    log(f'downloading {link}')
+                    download_video([link])
             except Exception as e:
-                if not args.ignoreerrors:
-                    input('[downlaoder] Download interrupted. Press [enter] to continue with next song.')
+                if tries_left <= 1:
+                    tries_left -= 1
+                    log(f'Download failed, retries left: {tries_left}')
+                    download_and_search(song, tries_left)
+                else:
+                    log('Song download failed too often. Continuing...')
 
-            # and sleep again
-            sleep_random()
+        # do that looping through all playlist names
+        for song in song_names:
+            download_and_search(song, args.retries)
 
     except KeyboardInterrupt:
         log('Interrupted')
