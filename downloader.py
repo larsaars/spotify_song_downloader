@@ -92,7 +92,7 @@ if __name__ == '__main__':
                 '--retries',
                 type=int,
                 default=2,
-                help='retry n times on download error')
+                help='retries on download error')
 
         args = parser.parse_args()
 
@@ -130,7 +130,7 @@ if __name__ == '__main__':
                     log(f'downloading {link}')
                     download_video([link])
             except Exception as e:
-                if tries_left <= 1:
+                if tries_left >= 1:
                     tries_left -= 1
                     log(f'Download failed, retries left: {tries_left}')
                     download_and_search(song, tries_left)
